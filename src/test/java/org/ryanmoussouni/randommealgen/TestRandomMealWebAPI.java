@@ -50,8 +50,9 @@ public class TestRandomMealWebAPI {
                     .build();
             var response = apiClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
             var objectMapper = new ObjectMapper();
-            var meals = objectMapper.readValue(response, MealsDTO.class);
-            Assertions.assertEquals(meals.size(), 0);
+            var mealsDTO = objectMapper.readValue(response.body(), MealsDTO.class);
+            var meals = mealsDTO.getMeals();
+            Assertions.assertEquals(meals.size(), 1);
         } catch (IOException e) {
             Assertions.fail();
         } catch (InterruptedException e) {
