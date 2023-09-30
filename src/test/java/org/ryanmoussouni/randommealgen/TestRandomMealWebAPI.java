@@ -1,5 +1,6 @@
 package org.ryanmoussouni.randommealgen;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -37,6 +38,26 @@ public class TestRandomMealWebAPI {
             Assertions.fail("The method threw an InterruptedException");
         } catch (URISyntaxException use){
             Assertions.fail("The method threw an URISyntaxException");
+        }
+    }
+
+    @Test
+    void performHttpRequest_returnsSingleMeal() {
+        try {
+            var httpRequest = HttpRequest.newBuilder()
+                    .uri(new URI(MEAL_WEB_API_ENDPOINT_URI))
+                    .GET()
+                    .build();
+            var response = apiClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            var objectMapper = new ObjectMapper();
+            var meals = objectMapper.readValue(response, MealsDTO.class);
+            Assertions.assertEquals(meals.size(), 0);
+        } catch (IOException e) {
+            Assertions.fail();
+        } catch (InterruptedException e) {
+            Assertions.fail();
+        } catch (URISyntaxException e) {
+            Assertions.fail();
         }
     }
 }
