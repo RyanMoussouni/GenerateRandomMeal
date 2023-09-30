@@ -3,6 +3,7 @@ package org.ryanmoussouni.randommealgen;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+@Tag("Integration")
 public class TestRandomMealWebAPI {
     public static final String MEAL_WEB_API_ENDPOINT_URI = "https://www.themealdb.com/api/json/v1/1/random.php";
     private HttpClient apiClient;
