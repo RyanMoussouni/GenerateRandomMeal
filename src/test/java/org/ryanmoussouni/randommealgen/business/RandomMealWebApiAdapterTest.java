@@ -10,17 +10,17 @@ import static org.mockito.Mockito.*;
 class RandomMealWebApiAdapterTest {
     @Test
     void getMeals_errorWhenFetching_throwsMealGenerationError() {
-        var mealFetcherMock = mock(MealFetcher.class);
+        var mealFetcherStub = mock(MealFetcher.class);
         try {
             doAnswer((invocation) -> {
                 throw new MealGenerationError(new Exception());
-            }).when(mealFetcherMock)
+            }).when(mealFetcherStub)
             .fetchMeals();
         } catch (WebCommunicationException e) {
             // do nothing
         }
         var adapter = new RandomMealWebApiAdapter();
-        adapter.setHttpClient(mealFetcherMock);
+        adapter.setHttpClient(mealFetcherStub);
 
         try {
             adapter.getMeal();
