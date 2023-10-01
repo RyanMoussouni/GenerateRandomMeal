@@ -14,17 +14,22 @@ import java.net.http.HttpResponse;
 public class MealWebApiClient implements MealFetcher {
     private HttpClient httpClient;
 
+    @Autowired
+    public void setHttpClient(HttpClient httpClient) {
+        this.httpClient = httpClient;
+    }
+
     @Override
-    public HttpResponse<String> fetchMeals() {
+    public HttpResponse<String> fetchMeals() throws WebCommunicationException {
         try {
             var httpRequest = buildHttpRequest();
             return httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+            throw new WebCommunicationException(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new WebCommunicationException(e);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new WebCommunicationException(e);
         }
     }
 
