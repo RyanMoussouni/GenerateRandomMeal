@@ -24,11 +24,7 @@ public class MealWebApiClient implements MealFetcher {
         try {
             var httpRequest = buildHttpRequest();
             return httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-        } catch (URISyntaxException e) {
-            throw new WebCommunicationException(e);
-        } catch (IOException e) {
-            throw new WebCommunicationException(e);
-        } catch (InterruptedException e) {
+        } catch (URISyntaxException | InterruptedException | IOException e) {
             throw new WebCommunicationException(e);
         }
     }
