@@ -1,4 +1,4 @@
-package org.ryanmoussouni.randommealgen;
+package org.ryanmoussouni.randommealgen.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
