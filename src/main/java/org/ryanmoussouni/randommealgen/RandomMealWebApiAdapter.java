@@ -22,9 +22,7 @@ public class RandomMealWebApiAdapter implements MealSupplier {
             var meals = objectMapper.readValue(httpResponse.body(), MealsDTO.class);
             return meals.getMeals()
                     .get(0);
-        } catch (JsonProcessingException e) {
-            throw new MealGenerationError(e);
-        } catch (WebCommunicationException e) {
+        } catch (JsonProcessingException | WebCommunicationException e) {
             throw new MealGenerationError(e);
         }
     }
