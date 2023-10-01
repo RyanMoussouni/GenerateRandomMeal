@@ -1,4 +1,4 @@
-package org.ryanmoussouni.randommealgen;
+package org.ryanmoussouni.randommealgen.business;
 
 import org.ryanmoussouni.randommealgen.domain.Meal;
 import org.ryanmoussouni.randommealgen.error.MealGenerationError;

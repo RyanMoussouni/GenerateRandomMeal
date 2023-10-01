@@ -1,7 +1,9 @@
-package org.ryanmoussouni.randommealgen;
+package org.ryanmoussouni.randommealgen.business;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.ryanmoussouni.randommealgen.business.MealFetcher;
+import org.ryanmoussouni.randommealgen.business.MealSupplier;
 import org.ryanmoussouni.randommealgen.domain.Meal;
 import org.ryanmoussouni.randommealgen.domain.MealsDTO;
 import org.ryanmoussouni.randommealgen.error.MealGenerationError;

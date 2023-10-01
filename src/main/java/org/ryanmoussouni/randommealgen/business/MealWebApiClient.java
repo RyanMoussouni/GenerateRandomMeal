@@ -1,5 +1,6 @@
-package org.ryanmoussouni.randommealgen;
+package org.ryanmoussouni.randommealgen.business;
 
+import org.ryanmoussouni.randommealgen.business.MealFetcher;
 import org.ryanmoussouni.randommealgen.error.WebCommunicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
