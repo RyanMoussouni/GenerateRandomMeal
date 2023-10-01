@@ -37,7 +37,7 @@ class RandomMealWebApiAdapterTest {
         var mealFetcherStub = mock(MealFetcher.class);
         var httpResponseStub = mock(HttpResponse.class);
         when(httpResponseStub.body())
-                .thenReturn(createMealFixture());
+                .thenReturn(createFetcherResponseFixture());
         try {
             when(mealFetcherStub.fetchMeals())
                     .thenReturn(httpResponseStub);
@@ -54,7 +54,7 @@ class RandomMealWebApiAdapterTest {
         }
     }
 
-    private String createMealFixture() {
+    private String createFetcherResponseFixture() {
         return """
                 {
                     "meals": [
