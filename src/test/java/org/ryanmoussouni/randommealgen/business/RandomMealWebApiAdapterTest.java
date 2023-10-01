@@ -34,7 +34,7 @@ class RandomMealWebApiAdapterTest {
     }
 
     @Test
-    void getMeals_singleMealReturnedByFetcher_() {
+    void getMeals_singleMealReturnedByFetcher_returnsTheMeal() {
         var expectedMeal = createMealFixture();
         var mealFetcherStub = mock(MealFetcher.class);
         var httpResponseStub = mock(HttpResponse.class);
