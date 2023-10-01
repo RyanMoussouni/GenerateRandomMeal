@@ -2,6 +2,8 @@ package org.ryanmoussouni.randommealgen;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.ryanmoussouni.randommealgen.Error.MealGenerationError;
+import org.ryanmoussouni.randommealgen.Error.WebCommunicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

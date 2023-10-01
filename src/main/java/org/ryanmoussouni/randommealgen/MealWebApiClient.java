@@ -1,5 +1,6 @@
 package org.ryanmoussouni.randommealgen;
 
+import org.ryanmoussouni.randommealgen.Error.WebCommunicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
