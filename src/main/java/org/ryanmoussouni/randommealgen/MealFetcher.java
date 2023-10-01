@@ -1,6 +1,6 @@
 package org.ryanmoussouni.randommealgen;
 
-import org.ryanmoussouni.randommealgen.Error.WebCommunicationException;
+import org.ryanmoussouni.randommealgen.error.WebCommunicationException;
 
 import java.net.http.HttpResponse;
 
