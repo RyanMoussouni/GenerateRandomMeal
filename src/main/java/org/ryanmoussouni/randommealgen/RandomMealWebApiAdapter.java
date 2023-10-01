@@ -1,8 +1,9 @@
 package org.ryanmoussouni.randommealgen;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 @Component
 public class RandomMealWebApiAdapter implements MealSupplier {
@@ -14,7 +15,17 @@ public class RandomMealWebApiAdapter implements MealSupplier {
     }
 
     @Override
-    public Meal getMeal() {
-        throw new UnsupportedOperationException();
+    public Meal getMeal() throws MealGenerationError {
+        try {
+            var httpResponse = httpClient.fetchMeals();
+            var objectMapper = new ObjectMapper();
+            var meals = objectMapper.readValue(httpResponse.body(), MealsDTO.class);
+            return meals.getMeals()
+                    .get(0);
+        } catch (JsonProcessingException e) {
+            throw new MealGenerationError(e);
+        } catch (WebCommunicationException e) {
+            throw new MealGenerationError(e);
+        }
     }
 }
