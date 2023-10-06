@@ -24,7 +24,7 @@ public class MealGenerationController {
         this.randomMealSupplier = randomMealSupplier;
     }
 
-    @RequestMapping(name = "/random", method = RequestMethod.GET)
+    @RequestMapping(path = "/random", method = RequestMethod.GET)
     public ResponseEntity<String> handleRandomMeal() {
         try {
             var randomMeal = randomMealSupplier.getMeal();
