@@ -1,7 +1,6 @@
 package org.ryanmoussouni.randommealgen.business;
 
 import org.ryanmoussouni.randommealgen.error.WebCommunicationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -13,12 +12,8 @@ import java.net.http.HttpResponse;
 
 @Component
 public class MealWebApiClient implements MealFetcher {
-    private HttpClient httpClient;
-
-    @Autowired
-    public void setHttpClient(HttpClient httpClient) {
-        this.httpClient = httpClient;
-    }
+    private static final HttpClient httpClient = HttpClient.newBuilder()
+            .build();
 
     @Override
     public HttpResponse<String> fetchMeals() throws WebCommunicationException {
